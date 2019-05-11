@@ -1,0 +1,14 @@
+# could be: StorageClass, VolumeSnapshotContent, VolumeSnapshotClass
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: task-pv-claim
+# see https://kubernetes.io/docs/concepts/storage/storage-classes/#reclaim-policy
+reclaimPolicy: Retain
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi

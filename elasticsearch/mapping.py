@@ -1,0 +1,48 @@
+FIVE_LAYER_MAPPING={
+    "settings":{
+        "number_of_shards": 1,
+        "number_of_replicas": 0
+    },
+    "mappings":{
+        "province":{
+            "type":"nested",
+            "properties":{
+                "province_name":{"type":"string"},
+                "province_code":{"type":"long"},
+                "province_name_pinyin":{"type":"string"},
+                "city":{
+                    "type":"nested",
+                    "properties":{
+                        "city_name":{"type":"string"},
+                        "city_code":{"type":"long"},
+                        "city_name_pinyin":{"type":"string"},
+                        "district":{
+                            "type":"nested",
+                            "properties":{
+                                "district_name":{"type":"string"},
+                                "district_code":{"type":"long"},
+                                "district_name_pinyin":{"type":"string"},
+                                "street":{
+                                    "type":"nested",
+                                    "properties":{
+                                        "street_name":{"type":"string"},
+                                        "street_code":{"type":"long"},
+                                        "street_name_pinyin":{"type":"string"},
+                                        "road":{
+                                            "type":"nested",
+                                            "properties":{
+                                                "road_name":{"type":"string"},
+                                                "road_code":{"type":"long"},
+                                                "road_name_pinyin":{"type":"string"}
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

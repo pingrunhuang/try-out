@@ -1,0 +1,18 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: task-pv-volume
+  # Storage configured with a group ID (GID) allows writing only by Pods using the same GID
+  # Then the GID is automatically added to any Pod that uses the PersistentVolume
+  annotations:
+    pv.beta.kubernetes.io/gid: "1234"
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/Users/frank/dev/jupyterhub/data"
