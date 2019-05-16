@@ -1,0 +1,2 @@
+- docker run -p 6379:6379 -v $PWD/data:/data --name redis -d redis --appendonly yes
+- docker exec -it redis redis-cli
