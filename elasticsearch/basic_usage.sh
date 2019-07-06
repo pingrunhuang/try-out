@@ -48,12 +48,39 @@ curl -XPUT http://localhost:9200/megacorp/employee/3 -H "Content-Type:applicatio
 curl -XGET $MASTER_IP:$PORT/megacorp/employee/1 -H "Content-Type:application/json" 
 
 
-# retrieve first 10 by default
+# retrieve first 10 with index and type by default
 curl -XGET $MASTER_IP:$PORT/megacorp/employee/_search -H "Content-Type:application/json"
+
+# retrieve any number of records with just index 
+curl -XGET http://127.0.0.1:9200/megacorp/_search/?size=1
 
 
 # search for entries that have the family name smith
 curl -XGET http://localhost:9200/megacorp/employee/_search?q=last_name:Smith -H "Content-Type:application/json"
+
+# fuzzy search for entries that last name contains smith
+curl -XPOST http://127.0.0.1:9200/pois/politics/_search -H "Content-Type:application/json" -d '
+{
+    "query": {
+        "wildcard" : { "poi_name" : "*深圳*" }
+    }
+}'
+# fuzzy search multi field for entries
+
+curl -XPOST http://127.0.0.1:9200/pois/politics/_search -H "Content-Type:application/json" -d '
+{
+    "query": {
+        "multi_match": {
+            "query": "*深*",
+            "fields": [
+                "poi_name",
+                "poi_type"
+            ]
+        }
+    }
+}'
+
+
 
 
 # use query DSL to achieve the same like operation
