@@ -23,7 +23,7 @@
 
     <properties>
         <immutables.version>2.2.10</immutables.version>
-        <vertx.version>3.5.4</vertx.version>
+        <vertx.version>3.9.4</vertx.version>
         <junit.version>4.12</junit.version>
         <assertj.version>3.11.1</assertj.version>
         <MutabilityDetector.version>0.9.6</MutabilityDetector.version>
